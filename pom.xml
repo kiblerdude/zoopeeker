@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.kiblerdude.zoopeeker</groupId>
+	<groupId>org.kiblerdude</groupId>
 	<artifactId>zoopeeker</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -116,6 +116,32 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<configuration>
+					<mainClass>org.kiblerdude.zoopeeker.ZooPeekerService</mainClass>
+					<includeProjectDependencies>false</includeProjectDependencies>
+					<includePluginDependencies>true</includePluginDependencies>
+					<executableDependency>
+						<groupId>org.kiblerdude</groupId>
+						<artifactId>zoopeeker</artifactId>
+					</executableDependency>
+					<arguments>
+						<argument>server</argument>
+					</arguments>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.kiblerdude</groupId>
+						<artifactId>zoopeeker</artifactId>
+						<version>${project.version}</version>
+						<scope>runtime</scope>
+					</dependency>
+				</dependencies>
+			</plugin>			
 		</plugins>
 	</build>
 </project>

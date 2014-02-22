@@ -1,0 +1,92 @@
+html {
+    background: #fff; 
+    color:#111;      
+    font-family:"Lucida Console";
+    font-size:20px;
+    font-weight:lighter;
+    margin: 0px;
+    padding: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+    min-width: 800px;
+    line-height:20px;
+}
+body {
+    margin: 0px;
+    padding: 0px;    
+}
+h1 {
+    margin: 0px;
+    padding: 10px; 
+}
+h3 {
+    margin: 0px;
+    padding: 10px; 
+}
+a {
+    color: #00a;
+    text-decoration:none;
+}
+a:visited {
+    color: #00a;
+    text-decoration:none;
+}
+a:hover {
+	color: #f00;
+}
+.separated {
+	padding: 0px;
+	margin: 0px;
+	border-style: solid;
+	border-width: 0px;
+	border-color: #ccc;
+	border-bottom-width: 2px;		
+}
+#zoopeeker {
+	position: relative;
+}
+#top {
+
+}
+#status {
+	padding: 10px;
+}
+span.status {
+	padding: 5px;
+	border-style: outset;
+	border-width: 1px;
+	border-color: #aaa;
+	border-radius:5px;	
+}
+span.connected {
+	background: #0f0;
+}
+span.disconnected {
+	background: #f00;
+}
+span.node {
+	padding: 10px;
+	cursor: pointer;	
+}
+div.node {
+	padding: 10px;
+	cursor: pointer;
+}
+#breadcrumbs {
+	padding: 10px;
+}
+#nodes {
+	position: absolute;
+	left: 0px;
+	width: 300px;
+	padding: 10px;
+	border-right-width: 2px;
+	min-height: 500px;	
+}
+#data {
+	position: absolute;
+	right: 0px;
+	left: 320px;
+	padding: 10px;
+	min-height: 500px;	
+}

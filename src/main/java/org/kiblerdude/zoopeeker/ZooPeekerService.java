@@ -5,10 +5,10 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.ZooKeeper;
 import org.kiblerdude.zoopeeker.resource.NodeResource;
-import org.kiblerdude.zoopeeker.resource.RootResource;
 import org.kiblerdude.zoopeeker.zk.ZooKeeperMonitor;
 
 import com.yammer.dropwizard.Service;
+import com.yammer.dropwizard.assets.AssetsBundle;
 import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
 import com.yammer.dropwizard.views.ViewBundle;
@@ -26,12 +26,12 @@ public class ZooPeekerService extends Service<ZooPeekerConfiguration> {
 	public void initialize(Bootstrap<ZooPeekerConfiguration> bootstrap) {
 		bootstrap.setName("zoopeeker");
 		bootstrap.addBundle(new ViewBundle());
-
+		bootstrap.addBundle(new AssetsBundle("/assets/", "/assets"));
 		try {
 			LOG.debug("Connecting to ZooKeeper");
 			zookeeper = new ZooKeeper("192.168.33.10:2181", 3000, new ZooKeeperMonitor());
 		} catch (IOException e) {
-
+			LOG.error(e.getMessage(), e);
 		}
 	}
 
@@ -39,8 +39,7 @@ public class ZooPeekerService extends Service<ZooPeekerConfiguration> {
 	public void run(ZooPeekerConfiguration configuration,
 			Environment environment) throws Exception {
 		LOG.debug("Adding Resources");
-		environment.addHealthCheck(new ZooPeekerHealthCheck());
-		environment.addResource(new RootResource(zookeeper));
+		//environment.addHealthCheck(new ZooPeekerHealthCheck());
 		environment.addResource(new NodeResource(zookeeper));
 	}
 
