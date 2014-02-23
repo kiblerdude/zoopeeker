@@ -7,12 +7,12 @@ import com.yammer.dropwizard.config.Configuration;
 
 public class ZooPeekerConfiguration extends Configuration {
     @NotEmpty
-    @JsonProperty
-    private String host = "localhost";
+    @JsonProperty(value="zookeeper.host")
+    private String host;
 
     @NotEmpty
-    @JsonProperty
-    private String port = "2181";
+    @JsonProperty(value="zookeeper.port")
+    private String port;
 
     public String getHost() {
         return host;

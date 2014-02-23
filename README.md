@@ -12,7 +12,13 @@ ZooPeeker can be run with the following command:
     java -jar zoopeeker.jar server config.yaml
 
 #### Configuration
-TODO
+The DropWizard configuration file needs to specify the ZooKeeper **host** and **port** to connect to.
+
+The defaults in the config.yml are:
+
+    zookeeper.host: 192.168.33.10
+    zookeeper.port: 2181
+
 
 #### Development
 

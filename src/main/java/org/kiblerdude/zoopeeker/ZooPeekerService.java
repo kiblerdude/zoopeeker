@@ -27,19 +27,24 @@ public class ZooPeekerService extends Service<ZooPeekerConfiguration> {
 		bootstrap.setName("zoopeeker");
 		bootstrap.addBundle(new ViewBundle());
 		bootstrap.addBundle(new AssetsBundle("/assets/", "/assets"));
-		try {
-			LOG.debug("Connecting to ZooKeeper");
-			zookeeper = new ZooKeeper("192.168.33.10:2181", 3000, new ZooKeeperMonitor());
-		} catch (IOException e) {
-			LOG.error(e.getMessage(), e);
-		}
 	}
 
 	@Override
-	public void run(ZooPeekerConfiguration configuration,
-			Environment environment) throws Exception {
-		LOG.debug("Adding Resources");
-		//environment.addHealthCheck(new ZooPeekerHealthCheck());
+	public void run(ZooPeekerConfiguration configuration, Environment environment) throws Exception {
+		
+		try {
+			
+			String zkHost = configuration.getHost();
+			String zkPort = configuration.getPort();
+			String zkHostPort = String.format("%s:%s", zkHost, zkPort);
+			
+			LOG.info("Connecting to ZooKeeper " + zkHostPort);
+			zookeeper = new ZooKeeper(zkHostPort, 3000, new ZooKeeperMonitor());
+		} catch (IOException e) {
+			LOG.error(e.getMessage(), e);
+		}		
+		
+		environment.addHealthCheck(new ZooPeekerHealthCheck());
 		environment.addResource(new NodeResource(zookeeper));
 	}
 

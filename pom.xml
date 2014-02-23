@@ -131,6 +131,7 @@
 					</executableDependency>
 					<arguments>
 						<argument>server</argument>
+						<argument>config.yml</argument>
 					</arguments>
 				</configuration>
 				<dependencies>
