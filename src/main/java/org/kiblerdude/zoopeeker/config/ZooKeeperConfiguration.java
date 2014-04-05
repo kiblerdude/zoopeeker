@@ -1,17 +1,17 @@
-package org.kiblerdude.zoopeeker;
+package org.kiblerdude.zoopeeker.config;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.yammer.dropwizard.config.Configuration;
 
-public class ZooPeekerConfiguration extends Configuration {
+public class ZooKeeperConfiguration extends Configuration {
     @NotEmpty
-    @JsonProperty(value="zookeeper.host")
+    @JsonProperty(value="host")
     private String host;
 
     @NotEmpty
-    @JsonProperty(value="zookeeper.port")
+    @JsonProperty(value="port")
     private String port;
 
     public String getHost() {

@@ -14,13 +14,18 @@ ZooPeeker can be run with the following command:
 #### Configuration
 The DropWizard configuration file needs to specify the ZooKeeper **host** and **port** to connect to.
 
-The defaults in the config.yml are:
+The defaults in the `config.yml` are:
 
-    zookeeper.host: 192.168.33.10
-    zookeeper.port: 2181
+    zookeeper:
+		host: 192.168.33.10
+    	port: 2181
 
 
 #### Development
 
 * Apache Maven 2.2.1
 * Java 7
+
+After you `compile` and `install` with Maven, you can use `exec:java` to run the application.
+
+Open `localhost:8080` in a browser.
