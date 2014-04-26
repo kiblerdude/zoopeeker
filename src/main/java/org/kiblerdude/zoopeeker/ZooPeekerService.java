@@ -8,8 +8,8 @@ import org.kiblerdude.zoopeeker.config.ZooKeeperConfiguration;
 import org.kiblerdude.zoopeeker.resource.NodeResource;
 import org.kiblerdude.zoopeeker.zk.ZooKeeperMonitor;
 
+import com.bazaarvoice.dropwizard.assets.ConfiguredAssetsBundle;
 import com.yammer.dropwizard.Service;
-import com.yammer.dropwizard.assets.AssetsBundle;
 import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
 import com.yammer.dropwizard.views.ViewBundle;
@@ -26,8 +26,9 @@ public class ZooPeekerService extends Service<ServiceConfiguration> {
 	@Override
 	public void initialize(Bootstrap<ServiceConfiguration> bootstrap) {
 		bootstrap.setName("zoopeeker");
+		
 		bootstrap.addBundle(new ViewBundle());
-		bootstrap.addBundle(new AssetsBundle("/assets/", "/assets"));
+		bootstrap.addBundle(new ConfiguredAssetsBundle("/assets/", "/assets/"));
 	}
 
 	@Override

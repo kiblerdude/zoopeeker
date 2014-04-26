@@ -1,6 +1,10 @@
 zookeeper:
   host: 192.168.33.10
   port: 2181
+  
+assets:
+  overrides:
+    /assets: src/main/resources/assets/
 
 http:
   port: 8080

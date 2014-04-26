@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<link rel="SHORTCUT ICON" href="/assets/zookeeper.ico"/>
 	  
 	    <link rel="stylesheet" type="text/css" href="/assets/zoopeeker.css"/>
 	    
