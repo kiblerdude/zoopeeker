@@ -15,9 +15,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			vb.customize ["modifyvm", :id, "--cpus", "1"]   
 		end 	
 		
-	  # config.vm.provision :chef_solo do |chef|
-	  #   chef.cookbooks_path = "./chef-repo/cookbooks"
-	  #   chef.add_recipe "zookeeper"
-	  # end		
+		node.vm.provision :chef_solo do |chef|
+			chef.cookbooks_path = "chef-repo/cookbooks"
+			chef.json = {
+				"zookeeper" => {
+					"yum" => {
+						"repo" => "http://public-repo-1.hortonworks.com/HDP-1.2.0/repos/centos6/hdp.repo"
+					}
+				}
+			}
+			chef.add_recipe "zookeeper"
+		end		
 	end	
 end
